@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Toffle9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 80%;
+            height: 100vh;
+            margin: auto;
+            display: grid;
+            place-items: center;
+        }
+
+        h1 {
+            font-family: sans-serif;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px solid steelblue;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            outline: none;
+        }
+    </style>
+    <script>
+        const qrcode = document.getElementById("qrcode");
+        const textInput = document.getElementById("text");
+
+        const qr = new QRCode(qrcode);
+
+        textInput.oninput = (e) => {
+            qr.makeCode(e.target.value.trim());
+        };
+
+        qr.makeCode(textInput.value.trim());
+
+    </script>
+</head>
+
+<body>
+    <h1>QR Code Generator</h1>
+    <input type="text" spellcheck="false" id="text" value="https://google.com" />
+    <div id="qrcode"></div>
+</body>
+
+</html>
